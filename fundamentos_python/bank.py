@@ -25,11 +25,12 @@ while True:
             print("Valor R$ %.2f depositado com sucesso." %quantidade)
         else:
             print("Operação negada. Valores devem ser positivos.")
-    elif opcao == "2":
-        if (numero_saques <= LIMITE_SAQUES):
-            quantidade = float(input("Digite a quantidade a ser depositada: "))
+    elif opcao == "2":  
+        quantidade = float(input("Digite a quantidade a ser depositada: "))
+        if (numero_saques <= LIMITE_SAQUES and quantidade <= limite):
             if (quantidade > 0) and (quantidade <= saldo):
                 saldo -= quantidade
+                numero_saques += 1
                 extrato_impressao += f"Saque R$ {quantidade:.2f}\nSaldo: R$ {saldo:.2f} \n==============================\n"
                 print("Valor R$ %.2f sacado com sucesso." %quantidade)
             else:
